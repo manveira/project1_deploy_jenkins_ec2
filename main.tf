@@ -1,7 +1,3 @@
-/* This Terraform deployment creates the following resources:
-   VPC, Subnet, Internet Gateway, Default Route, IAM instance profile with S3 access,
-   Security Group, SSH Key, and EC2 with userdata script installing Jenkins */
-
 # Create VPC Resources
 
 resource "aws_vpc" "vpc" {
