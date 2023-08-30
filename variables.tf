@@ -101,18 +101,21 @@ variable "ec2_user_data" {
   default     = <<EOF
 #!/bin/bash
 # Install Jenkins and Java 
+
+sudo yum update –y
 sudo wget -O /etc/yum.repos.d/jenkins.repo \
     https://pkg.jenkins.io/redhat-stable/jenkins.repo
-sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
-sudo yum upgrade -y
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+sudo yum upgrade
+
 # Add required dependencies for the jenkins package
-sudo amazon-linux-extras install -y java-openjdk11 
-sudo yum install -y jenkins
-sudo systemctl daemon-reload
+sudo amazon-linux-extras install java-openjdk11 -y
+sudo yum install jenkins -y
 
 # Start Jenkins
 sudo systemctl enable jenkins
 sudo systemctl start jenkins
+sudo systemctl status jenkins
 
 # Firewall Rules
 if [[ $(firewall-cmd --state) = 'running' ]]; then
