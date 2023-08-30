@@ -78,7 +78,7 @@ EOF
 variable "bucket_name" {
   description = "S3 bucket name"
   type        = string
-  default     = "terraform1demo1s3bucket2023"
+  default     = "buckets3manveterraformright"
 }
 
 # EC2 Variables
